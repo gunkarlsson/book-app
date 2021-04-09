@@ -7,8 +7,9 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-export const AuthProvider = ({ children }) => {
+export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password);
@@ -37,9 +38,11 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      setLoading(false);
+      //as soon as we have a user, setLoading changes to false
     });
-
     return unsubscribe;
+    //unsubscribe will unsubscribe us from the onAuthState-listener when it's unmounted
   }, []);
 
   const value = {
@@ -52,5 +55,9 @@ export const AuthProvider = ({ children }) => {
     updatePassword,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-};
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+}

@@ -28,7 +28,7 @@ export default function ForgotPassword() {
   return (
     <>
       <section>
-        <button onClick={() => history.goBack()}></button>
+        <button onClick={() => history.goBack()}>Go back</button>
         <h2>Password Reset</h2>
         {error && <div>{error}</div>}
         {message && <div>{message}</div>}
