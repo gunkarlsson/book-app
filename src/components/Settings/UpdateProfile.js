@@ -1,6 +1,16 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
+import {
+  BackButton,
+  PrimarySection,
+  PrimaryButton,
+  PrimaryH1,
+  UpdateProfileForm,
+  FormSection,
+  SecondaryH1,
+  SubmitButton,
+} from "../../style/StyledComponents";
 
 export default function UpdateProfile() {
   const emailRef = useRef();
@@ -55,43 +65,58 @@ export default function UpdateProfile() {
 
   return (
     <>
-      <section>
-        <button onClick={() => history.goBack()}>Go back</button>
-        <h1>Update Profile</h1>
+      <PrimarySection>
+        <BackButton onClick={() => history.goBack()}>
+          {" "}
+          <svg
+            width="12"
+            height="18"
+            viewBox="0 0 12 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 2L2 9L10 16"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </BackButton>
+
+        <SecondaryH1>Update profile</SecondaryH1>
+
         {error && <div>{error}</div>}
         {message && <div>{message}</div>}
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Email</label>
-            <input
-              type="email"
-              ref={emailRef}
-              required
-              defaultValue={currentUser.email}
-            />
-          </div>
-          <div>
-            <label>Password</label>
-            <input
-              type="password"
-              ref={passwordRef}
-              placeholder="Leave blank to keep the same"
-            />
-          </div>
-          <div>
-            <label>Password Confirmation</label>
-            <input
-              type="password"
-              ref={passwordConfirmRef}
-              placeholder="Leave blank to keep the same"
-            />
-          </div>
+        <FormSection>
+          <UpdateProfileForm onSubmit={handleSubmit}>
+            <div className="form-control">
+              <input type="email" ref={emailRef} required />
+              <label>
+                <span>{currentUser.email}</span>
+              </label>
+            </div>
 
-          <button disabled={loading} type="submit">
-            Update
-          </button>
-        </form>
-      </section>
+            <div className="form-control">
+              <input type="password" ref={passwordRef} required />
+              <label>
+                <span>Password</span>
+              </label>
+            </div>
+            <div className="form-control">
+              <input type="password" ref={passwordConfirmRef} required />
+              <label>
+                <span>Confirm password</span>
+              </label>
+            </div>
+
+            <SubmitButton disabled={loading} type="submit">
+              Save changes
+            </SubmitButton>
+          </UpdateProfileForm>
+        </FormSection>
+      </PrimarySection>
     </>
   );
 }

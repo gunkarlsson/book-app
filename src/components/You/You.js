@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
+import { PrimarySection, PrimaryH1 } from "../../style/StyledComponents";
 
 const You = () => {
   return (
-    <div>
-      <h1>You</h1>
+    <PrimarySection>
+      <PrimaryH1>You</PrimaryH1>
       <li>
         <Link to={ROUTES.STATS}>Stats</Link>
       </li>
@@ -15,7 +16,7 @@ const You = () => {
       <li>
         <Link to={ROUTES.WANT_TO_READ}>Want to Read</Link>
       </li>
-    </div>
+    </PrimarySection>
   );
 };
 

@@ -9,3 +9,4 @@ export const STATS = "/stats";
 export const SEARCH = "/search";
 export const SETTINGS = "/settings";
 export const UPDATE_PROFILE = "/update-profile";
+export const BOOKS = "/books";
