@@ -5,8 +5,8 @@ export const PrimarySection = styled.section`
   height: 92vh;
   width: 100%;
   top: 0;
-  /* background-color: ${(props) => props.theme.bgColor2};
-  color: ${(props) => props.theme.fontColor1}; */
+  background-color: ${(props) => props.theme.bgColor2};
+  color: ${(props) => props.theme.fontColor1};
   position: absolute;
 `;
 
@@ -170,10 +170,10 @@ export const SearchForm = styled.form`
     cursor: pointer;
     padding-top: 6px;
   }
-  button:active {
+  /* button:active {
     transform: scale(0.95);
     transition: transform 0.1s ease;
-  }
+  } */
 `;
 
 //----------------------------------- BOOK GRID ----------------------------------

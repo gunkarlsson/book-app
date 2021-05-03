@@ -11,7 +11,7 @@ import {
 } from "../../style/StyledComponents";
 import { HiMoon, HiSun } from "react-icons/hi";
 
-const Settings = () => {
+const Settings = (props) => {
   const [error, setError] = useState("");
   const { logout } = useAuth();
   const history = useHistory();
@@ -31,15 +31,15 @@ const Settings = () => {
   //   theme === "light" ? setTheme("dark") : setTheme("light");
   // };
 
-  // const changeTheme() {
-  //   if (props.theme === "light") {
-  //     props.setTheme("dark")
-  //   } else {
-  //     props.setTheme("light")
-  //   }
-  // }
+  const changeTheme = () => {
+    if (props.theme === "light") {
+      props.setTheme("dark");
+    } else {
+      props.setTheme("light");
+    }
+  };
 
-  // const icon = props.theme === "light" ? <HiMoon/> : <HiSun/>
+  const icon = props.theme === "light" ? <HiMoon /> : <HiSun />;
 
   return (
     <PrimarySection>
@@ -62,10 +62,10 @@ const Settings = () => {
         </PrimaryLink>
         {/* <button onClick={() => themeToggler()}>Change theme</button> */}
 
-        {/* <Toggle onClick={changeTheme}>{icon}</Toggle> */}
         {error && <div>{error}</div>}
         <PrimaryButton onClick={handleLogout}>Log Out</PrimaryButton>
       </SecondarySection>
+      <button onClick={changeTheme}>{icon}</button>
     </PrimarySection>
   );
 };

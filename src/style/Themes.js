@@ -23,16 +23,15 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 button {
-    height: 50px;
-    width: 100px;
+    
     border: 2px solid ${(props) => props.theme.fontColor1};
     color:${(props) => props.theme.fontColor1};
     background-color: ${(props) => props.theme.bgColor2};
     z-index: 10;
 }
-body {
+/* body {
     background-color: ${(props) => props.theme.bgColor2};
     color: ${(props) => props.theme.fontColor1};
-}
+} */
 
 `;

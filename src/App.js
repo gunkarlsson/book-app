@@ -16,27 +16,28 @@ import WantToRead from "./components/You/WantToRead";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyle } from "./style/Themes";
+import SplashScreen from "./components/SplashScreen";
 import style from "./style/style.css";
 import * as ROUTES from "./constants/routes";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+const themes = {
+  light: lightTheme,
+  dark: darkTheme,
+};
+
 const App = () => {
   const [theme, setTheme] = useState("light");
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
 
   return (
     <Router>
       <AuthProvider>
-        {/* <AuthProvider theme={theme} setTheme={setTheme}> */}
-        {/* <ThemeProvider> */}
-        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <ThemeProvider theme={themes[theme]}>
           <GlobalStyle />
-          <button onClick={() => themeToggler()}>Change theme</button>
           <Navigation />
           <Switch>
+            {/* <SplashScreen theme={theme} setTheme={setTheme} /> */}
             <Route exact path="/" component={Home} />
             <Route path={ROUTES.HOME} component={Home} />
 
@@ -48,9 +49,8 @@ const App = () => {
             <PrivateRoute
               path={ROUTES.SETTINGS}
               component={Settings}
-              // theme={theme}
-              // setTheme={setTheme}
-              // themeToggler={themeToggler}
+              theme={theme}
+              setTheme={setTheme}
             />
             <PrivateRoute
               path={ROUTES.UPDATE_PROFILE}
