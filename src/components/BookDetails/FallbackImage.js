@@ -1,7 +1,7 @@
 import React from "react";
 
 const FallbackImage = () => {
-  return <img alt="fallback for undefined covers" />;
+  return <img alt="undefined-cover" />;
 };
 
 export default FallbackImage;

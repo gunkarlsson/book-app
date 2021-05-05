@@ -5,6 +5,8 @@ import {
   PrimarySection,
   PrimaryH1,
   ResultGrid,
+  HomeSection,
+  PrimaryH2,
 } from "../style/StyledComponents";
 
 const Home = () => {
@@ -26,7 +28,11 @@ const Home = () => {
 
   return (
     <PrimarySection>
-      <PrimaryH1>Discover</PrimaryH1>
+      <HomeSection>
+        <h1>Discover</h1>
+
+        <h2>Popular</h2>
+      </HomeSection>
 
       {books.length > 0 && (
         <ResultGrid>

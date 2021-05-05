@@ -7,6 +7,7 @@ import {
   FaBook,
   FaRegBookmark,
   FaBookmark,
+  FaAngleLeft,
 } from "react-icons/fa";
 import { HiHome, HiOutlineHome, HiCog, HiOutlineCog } from "react-icons/hi";
 import {
@@ -24,7 +25,7 @@ import { ImSearch, ImBook, ImBooks } from "react-icons/im";
 const Navbar = styled.nav`
   ul {
     z-index: 10;
-    background-color: white;
+    background-color: ${(props) => props.theme.bgColor1};
     min-height: 8vh;
     max-height: 8vh;
     bottom: 0;
@@ -46,11 +47,11 @@ const Navbar = styled.nav`
     background: none;
   }
   .nav-tab > * {
-    color: black;
+    color: ${(props) => props.theme.fontColor1};
     transition: all 0.3s ease;
   }
   .nav-tab-active > * {
-    color: orange;
+    color: ${(props) => props.theme.accentColor};
   }
 `;
 

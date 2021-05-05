@@ -4,16 +4,18 @@ export const lightTheme = {
   bgColor1: "white",
   bgColor2: "#f8f8f8",
   fontColor1: "black",
-  fontColor2: "grey",
+  fontColor2: "#4C4C4C",
   accentColor: "orange",
+  greyColor: "#8C8C8C",
 };
 
 export const darkTheme = {
   bgColor1: "black",
-  bgColor2: "#454545",
+  bgColor2: "#4C4C4C",
   fontColor1: "white",
-  fontColor2: "#f8f8f8",
+  fontColor2: "#EAEAEA",
   accentColor: "orange",
+  greyColor: "#8C8C8C",
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -21,18 +23,6 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Work Sans";
 }
-button {
-    height: 50px;
-    width: 100px;
-    border: 2px solid ${(props) => props.theme.fontColor1};
-    color:${(props) => props.theme.fontColor1};
-    background-color: ${(props) => props.theme.bgColor2};
-    z-index: 10;
-}
-body {
-    background-color: ${(props) => props.theme.bgColor2};
-    color: ${(props) => props.theme.fontColor1};
-}
-
 `;

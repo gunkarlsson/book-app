@@ -13,50 +13,35 @@ import Stats from "./components/Stats/Stats";
 import HaveRead from "./components/You/HaveRead";
 import WantToRead from "./components/You/WantToRead";
 
-import { useState } from "react";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, GlobalStyle } from "./style/Themes";
-import style from "./style/style.css";
 import * as ROUTES from "./constants/routes";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "./style/Themes";
 import { AuthProvider } from "./context/AuthContext";
+import { useDarkmodeContext } from "./context/DarkmodeContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
-  const [theme, setTheme] = useState("light");
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
+  const { theme, lightTheme, darkTheme } = useDarkmodeContext();
 
   return (
     <Router>
       <AuthProvider>
-        {/* <AuthProvider theme={theme} setTheme={setTheme}> */}
-        {/* <ThemeProvider> */}
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
           <GlobalStyle />
-          <button onClick={() => themeToggler()}>Change theme</button>
           <Navigation />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path={ROUTES.HOME} component={Home} />
-
             <PrivateRoute path={ROUTES.SEARCH} component={Search} />
             <PrivateRoute
               path={`${ROUTES.BOOKS}/:id`}
               component={BookDetailsPage}
             />
-            <PrivateRoute
-              path={ROUTES.SETTINGS}
-              component={Settings}
-              // theme={theme}
-              // setTheme={setTheme}
-              // themeToggler={themeToggler}
-            />
+            <PrivateRoute path={ROUTES.SETTINGS} component={Settings} />
             <PrivateRoute
               path={ROUTES.UPDATE_PROFILE}
               component={UpdateProfile}
             />
-
             <PrivateRoute path={ROUTES.YOU} component={You} />
             <PrivateRoute path={ROUTES.STATS} component={Stats} />
             <PrivateRoute path={ROUTES.HAVE_READ} component={HaveRead} />

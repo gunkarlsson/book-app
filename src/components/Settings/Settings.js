@@ -8,8 +8,9 @@ import {
   PrimaryH1,
   SecondarySection,
   PrimaryButton,
+  ToggleSwitch as ToggleSwitchWrapper,
 } from "../../style/StyledComponents";
-import { HiMoon, HiSun } from "react-icons/hi";
+import { useDarkmodeContext } from "../../context/DarkmodeContext";
 
 const Settings = () => {
   const [error, setError] = useState("");
@@ -18,7 +19,6 @@ const Settings = () => {
 
   async function handleLogout() {
     setError("");
-
     try {
       await logout();
       history.push("/");
@@ -26,43 +26,40 @@ const Settings = () => {
       setError("Failed to log out");
     }
   }
-  // const [theme, setTheme] = useState("light");
-  // const themeToggler = (theme, setTheme) => {
-  //   theme === "light" ? setTheme("dark") : setTheme("light");
-  // };
 
-  // const changeTheme() {
-  //   if (props.theme === "light") {
-  //     props.setTheme("dark")
-  //   } else {
-  //     props.setTheme("light")
-  //   }
-  // }
+  const { theme, themeToggler } = useDarkmodeContext();
 
-  // const icon = props.theme === "light" ? <HiMoon/> : <HiSun/>
+  const [isToggled, setIsToggled] = useState(false);
 
   return (
     <PrimarySection>
+      {" "}
       <PrimaryH1>Settings</PrimaryH1>
-
       <SecondarySection>
         <PrimaryLink>
-          <Link to={ROUTES.UPDATE_PROFILE}>
-            Update password or email{" "}
-            <svg
-              width="6"
-              height="6"
-              viewBox="0 0 6 6"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="3" cy="3" r="3" fill="black" />
-            </svg>
-          </Link>
+          <Link to={ROUTES.UPDATE_PROFILE}>Update password or email</Link>
         </PrimaryLink>
-        {/* <button onClick={() => themeToggler()}>Change theme</button> */}
 
-        {/* <Toggle onClick={changeTheme}>{icon}</Toggle> */}
+        <ToggleSwitchWrapper isToggled={isToggled}>
+          <label className="switch ">
+            <input
+              type="checkbox"
+              checked={isToggled}
+              onChange={() => {
+                themeToggler();
+                setIsToggled((prev) => !prev);
+              }}
+            />
+            <span className="slider rounded" />
+          </label>
+        </ToggleSwitchWrapper>
+        {/* <Switch
+            onClick={themeToggler}
+            isToggled={isToggled}
+            onChange={() => setIsToggled(!isToggled)}
+          /> */}
+        {/* <button onClick={themeToggler}>{theme === "dark" ? "🌔" : "🌒"}</button> */}
+
         {error && <div>{error}</div>}
         <PrimaryButton onClick={handleLogout}>Log Out</PrimaryButton>
       </SecondarySection>

@@ -5,8 +5,8 @@ export const PrimarySection = styled.section`
   height: 92vh;
   width: 100%;
   top: 0;
-  /* background-color: ${(props) => props.theme.bgColor2};
-  color: ${(props) => props.theme.fontColor1}; */
+  background-color: ${(props) => props.theme.bgColor2};
+  color: ${(props) => props.theme.fontColor1};
   position: absolute;
 `;
 
@@ -15,8 +15,29 @@ export const SecondarySection = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: ${(props) => props.theme.bgColor2};
+  color: ${(props) => props.theme.fontColor1};
 `;
 
+export const HomeSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: ${(props) => props.theme.fontColor1};
+  margin-top: 50px;
+  margin-left: 40px;
+  h1 {
+    font-size: 2.2rem;
+    text-align: left;
+    font-family: "Amiri";
+  }
+  h2 {
+    font-size: 1.4rem;
+    text-align: left;
+    margin: 40px 0 20px 0;
+  }
+`;
 //----------------------------------- TEXT ELEMENTS ----------------------------------
 export const PrimaryH1 = styled.h1`
   text-align: center;
@@ -42,15 +63,14 @@ export const PrimaryLink = styled.li`
   margin: 15px 0;
   width: 80vw;
   display: block;
-  color: black;
 
   a {
-    color: black;
+    color: ${(props) => props.theme.fontColor1};
+    border-bottom: 2px solid ${(props) => props.theme.fontColor1};
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    border-bottom: 2px solid black;
     padding-bottom: 5px;
   }
 `;
@@ -78,7 +98,7 @@ export const UpdateProfileForm = styled.form`
   .form-control input {
     background: none;
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid ${(props) => props.theme.fontColor1};
     display: block;
     width: 100%;
     padding: 10px 0;
@@ -94,7 +114,7 @@ export const UpdateProfileForm = styled.form`
     position: absolute;
     top: 15px;
     left: 0;
-    color: #a5a5a5;
+    color: ${(props) => props.theme.fontColor2};
   }
 
   .form-control label span {
@@ -118,10 +138,11 @@ export const SearchForm = styled.form`
   margin: 30px 0;
 
   input {
+    background: none;
+    color: ${(props) => props.theme.fontColor1};
     width: 100%;
     height: 100%;
     font-size: 1.5rem;
-    background: none;
     border: none;
     cursor: pointer;
     padding-top: 5px;
@@ -135,7 +156,7 @@ export const SearchForm = styled.form`
     height: 100%;
     font-size: 1.5rem;
     pointer-events: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid ${(props) => props.theme.fontColor1};
   }
   label::after {
     content: "";
@@ -144,7 +165,7 @@ export const SearchForm = styled.form`
     left: 0;
     width: 100%;
     height: 100%;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid ${(props) => props.theme.fontColor1};
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
   }
@@ -166,6 +187,7 @@ export const SearchForm = styled.form`
 
   button {
     background: none;
+    color: ${(props) => props.theme.fontColor1};
     border: none;
     cursor: pointer;
     padding-top: 6px;
@@ -178,7 +200,6 @@ export const SearchForm = styled.form`
 
 //----------------------------------- BOOK GRID ----------------------------------
 export const ResultGrid = styled.section`
-  /* border: 1px solid blue; */
   padding: 0 20px;
   max-height: 80vh;
   display: grid;
@@ -189,41 +210,55 @@ export const ResultGrid = styled.section`
 `;
 
 export const ItemCard = styled.section`
+  background-color: none;
   display: flex;
   flex-direction: column;
-  background-color: none;
+  align-items: center;
   overflow: hidden;
   width: 180px;
 
   .image-bg {
+    background-color: ${(props) => props.theme.bgColor1};
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
     height: 180px;
-    width: 165px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    width: 160px;
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
   }
 
   img {
-    height: 70%;
-    background-color: #ddd;
+    height: 65%;
+    max-width: 70%;
+    background-color: ${(props) => props.theme.bgColor2};
+    box-shadow: -4px 4px 6px rgba(0, 0, 0, 0.2);
   }
 
   .text-div {
-    margin: 10px 0 20px 5px;
+    margin: 10px 0 20px 10px;
     text-align: left;
-    max-width: 95%;
+    width: 95%;
   }
 
   span {
     font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    color: ${(props) => props.theme.fontColor2};
   }
 
   h2 {
     font-weight: 600;
     font-size: 1.1rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    /* text-overflow: ellipsis; */
+    overflow: hidden;
+    color: ${(props) => props.theme.fontColor1};
   }
 `;
 
@@ -231,14 +266,16 @@ export const ItemCard = styled.section`
 export const BackButton = styled.button`
   background: none;
   border: none;
+  color: ${(props) => props.theme.fontColor1};
   margin-left: 30px;
   margin-top: 30px;
 `;
 
 export const PrimaryButton = styled.button`
   background: none;
+  border: 2px solid ${(props) => props.theme.fontColor1};
+  color: ${(props) => props.theme.fontColor1};
   font-size: 1.2rem;
-  border: 2px solid black;
   width: 80%;
   margin-top: 50px;
   padding: 10px;
@@ -246,9 +283,57 @@ export const PrimaryButton = styled.button`
 
 export const SubmitButton = styled.button`
   background: none;
+  border: 2px solid ${(props) => props.theme.fontColor1};
+  color: ${(props) => props.theme.fontColor1};
   font-size: 1.2rem;
-  border: 2px solid black;
   width: 100%;
   margin-top: 50px;
   padding: 10px;
+`;
+
+export const ToggleSwitch = styled.div`
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    background-color: ${(props) => props.theme.greyColor};
+    //BACKGROUND WHEN OFF
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .slider:before {
+    background-color: white;
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    transition: all 0.3s ease-in-out;
+  }
+  input:checked + .slider {
+    background-color: ${(props) => props.theme.accentColor};
+    //BACKGROUND WHEN ON
+  }
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  .slider.rounded {
+    border-radius: 34px;
+  }
+  .slider.rounded:before {
+    border-radius: 50%;
+  }
 `;

@@ -11,6 +11,7 @@ import {
   SecondaryH1,
   SubmitButton,
 } from "../../style/StyledComponents";
+import { FaAngleLeft } from "react-icons/fa";
 
 export default function UpdateProfile() {
   const emailRef = useRef();
@@ -67,22 +68,7 @@ export default function UpdateProfile() {
     <>
       <PrimarySection>
         <BackButton onClick={() => history.goBack()}>
-          {" "}
-          <svg
-            width="12"
-            height="18"
-            viewBox="0 0 12 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 2L2 9L10 16"
-              stroke="black"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          <FaAngleLeft size="2em" title="back" />
         </BackButton>
 
         <SecondaryH1>Update profile</SecondaryH1>
